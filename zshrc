@@ -6,7 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ulimit -n 10240
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="common"
 
 # Update automatically without asking
 zstyle ':omz:update' mode auto      

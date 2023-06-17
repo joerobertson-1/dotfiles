@@ -1,11 +1,14 @@
 #!/bin/zsh
 
 # Basic installs
-brew install rcm neovim
+brew install rcm neovim ripgrep
 
 # Install fonts
 brew tap homebrew/cask-fonts
-brew install font-fira-code
+brew install font-fira-code-nerd-font
+
+# Install custom zsh theme
+wget -O ~/.oh-my-zsh/custom/themes/common.zsh-theme https://raw.githubusercontent.com/jackharrisonsherlock/common/master/common.zsh-theme
 
 # Install packer (Neovim plugin manager)
 if [ ! -d "$HOME/.local/share/nvim/site/pack/packer" ]

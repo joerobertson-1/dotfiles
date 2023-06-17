@@ -1,3 +1,4 @@
 alias e="$EDITOR"
 alias vim="nvim"
 alias szh="source ~/.zshrc"
+alias c="clear"
