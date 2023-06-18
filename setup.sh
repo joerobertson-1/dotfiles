@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Basic installs
-brew install rcm neovim ripgrep
+brew install rcm neovim ripgrep tmuxinator
 
 # Install fonts
 brew tap homebrew/cask-fonts
