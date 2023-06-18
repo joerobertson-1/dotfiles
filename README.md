@@ -1,4 +1,4 @@
-#Joe Robertson's dotfiles
+# Joe Robertson's dotfiles
 
 These are my personal dotfiles, just a collection of useful config files for utilities I commonly use
 
