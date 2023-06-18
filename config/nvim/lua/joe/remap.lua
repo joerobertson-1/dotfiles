@@ -18,5 +18,14 @@ vim.keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 vim.keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
 vim.keymap.set("n", "<leader>q", ":q<CR>")
+vim.keymap.set("n", "<leader>w", ":w<CR>")
 
-vim.keymap.set("n", "<leader>tt", ":NERDTreeToggle<CR>")
+-- File tree
+vim.keymap.set("n", "<leader>tt", ":NvimTreeToggle<CR>")
+vim.keymap.set("n", "<leader>tf", ":NvimTreeFindFile<CR>")
+
+-- Bufferline
+vim.keymap.set("n", "<leader>jp", ":BufferLinePick<CR>")
+vim.keymap.set("n", "<leader>jk", ":BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<leader>ji", ":BufferLineCyclePrev<CR>")
+-- vim.keymap.set("n", "<leader>jx", ":BufferLinePickClose<CR>")

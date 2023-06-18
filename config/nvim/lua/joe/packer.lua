@@ -4,6 +4,8 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use 'nvim-tree/nvim-web-devicons'
+
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { { 'nvim-lua/plenary.nvim' } }
@@ -19,9 +21,16 @@ return require('packer').startup(function(use)
   use 'tpope/vim-commentary'
 
   use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
+
+  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
 
   use 'airblade/vim-gitgutter'
 
@@ -42,11 +51,18 @@ return require('packer').startup(function(use)
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },     -- Required
       { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'hrsh7th/cmp-path'},
+      { 'hrsh7th/cmp-buffer'},
       { 'L3MON4D3/LuaSnip' },     -- Required
     }
   }
 
-  use 'scrooloose/nerdtree'
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
 
   use({
     "kylechui/nvim-surround",

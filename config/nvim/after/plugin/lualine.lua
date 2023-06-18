@@ -1,5 +1,6 @@
 require('lualine').setup({
 	options = {
-		theme = "catppuccin"
+		theme = "catppuccin",
+    globalstatus = true,
 	}
 })
