@@ -20,6 +20,8 @@ return require('packer').startup(function(use)
     requires = "nvim-treesitter/nvim-treesitter",
   })
 
+  use "gcmt/wildfire.vim"
+
   use { 'nvim-telescope/telescope-ui-select.nvim' }
 
   use 'preservim/vimux'
