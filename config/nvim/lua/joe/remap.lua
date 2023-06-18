@@ -4,9 +4,19 @@ vim.keymap.set("i", "jk", "<ESC>")
 
 vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
 
+-- In visual mode, use J and K to move lines up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Increment numbers with leader + and -
 vim.keymap.set("n", "<leader>+", "<C-a>")
 vim.keymap.set("n", "<leader>-", "<C-x>")
 
+-- Yanking
+vim.keymap.set("n", "<leader>y", "\"_y")
+vim.keymap.set("v", "<leader>y", "\"_y")
+
+-- Window management
 vim.keymap.set("n", "<leader>sv", "<C-w>v")
 vim.keymap.set("n", "<leader>sh", "<C-w>s")
 vim.keymap.set("n", "<leader>se", "<C-w>=")
@@ -17,8 +27,11 @@ vim.keymap.set("n", "<leader>sx", ":close<CR>")
 -- vim.keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab
 -- vim.keymap.set("n", "<leader>tp", ":tabp<CR>") --  go to previous tab
 
+-- Ctrl-D and U automatically recentre
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>w", ":w<CR>")
