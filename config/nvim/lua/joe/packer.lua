@@ -14,8 +14,13 @@ return require('packer').startup(function(use)
   use { "catppuccin/nvim", as = "catppuccin" }
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
+  })
 
-  use {'nvim-telescope/telescope-ui-select.nvim' }
+  use { 'nvim-telescope/telescope-ui-select.nvim' }
 
   use 'preservim/vimux'
   use 'vim-test/vim-test'
@@ -30,12 +35,14 @@ return require('packer').startup(function(use)
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  use "ThePrimeagen/vim-be-good"
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
-  use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+  use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
   use 'airblade/vim-gitgutter'
 
@@ -56,9 +63,9 @@ return require('packer').startup(function(use)
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },     -- Required
       { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'hrsh7th/cmp-path'},
-      { 'hrsh7th/cmp-buffer'},
-      { 'L3MON4D3/LuaSnip' },     -- Required
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'L3MON4D3/LuaSnip' }, -- Required
     }
   }
 
@@ -78,6 +85,8 @@ return require('packer').startup(function(use)
       })
     end
   })
+
+  use "justinmk/vim-sneak"
 
   use 'christoomey/vim-tmux-navigator'
 end)

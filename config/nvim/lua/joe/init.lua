@@ -8,6 +8,8 @@ vim.cmd("colorscheme catppuccin")
 
 local opt = vim.opt
 
+opt.updatetime = 500
+
 opt.relativenumber = true
 opt.number = true
 
