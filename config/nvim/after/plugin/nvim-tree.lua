@@ -81,6 +81,7 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = false
   },
+  hijack_unnamed_buffer_when_opening = true,
   view = {
     width = {
       min = 30,

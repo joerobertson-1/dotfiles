@@ -32,7 +32,6 @@ cmp.setup({
     { name = "buffer",  keyword_length = 3 }
   },
   mapping = {
-    ['<TAB>'] = cmp.mapping.confirm({ select = true }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   window = {

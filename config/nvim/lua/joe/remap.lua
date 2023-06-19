@@ -2,11 +2,15 @@ vim.g.mapleader = " "
 
 vim.keymap.set("i", "jk", "<ESC>")
 
-vim.keymap.set("n", "<leader>nh", ":nohl<CR>")
+vim.keymap.set("n", "<leader>n", ":nohl<CR>")
 
 -- In visual mode, use J and K to move lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Save with <C-s> anywhere
+vim.keymap.set("n", "<C-s>", ":w<CR>")
+vim.keymap.set("i", "<C-s>", "<ESC>:w<CR>a")
 
 -- Increment numbers with leader + and -
 vim.keymap.set("n", "<leader>+", "<C-a>")
@@ -45,7 +49,9 @@ vim.keymap.set("n", "<leader>tt", ":NvimTreeToggle<CR>")
 vim.keymap.set("n", "<leader>tr", ":NvimTreeFindFile<CR>")
 
 -- Bufferline
-vim.keymap.set("n", "<leader>jp", ":BufferLinePick<CR>")
-vim.keymap.set("n", "<leader>jk", ":BufferLineCycleNext<CR>")
-vim.keymap.set("n", "<leader>ji", ":BufferLineCyclePrev<CR>")
-vim.keymap.set("n", "<leader>jx", ":BufferLinePickClose<CR>")
+vim.keymap.set("n", "<leader>jp", ":BufferLinePick<CR>", { desc = "Pick Buffer" })
+vim.keymap.set("n", "<leader>jk", ":BufferLineCycleNext<CR>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader>ji", ":BufferLineCyclePrev<CR>", { desc = "Previous Buffer" })
+vim.keymap.set("n", "<leader>jx", ":BufferLinePickClose<CR>", { desc = "Close Buffer" })
+vim.keymap.set("n", "<leader>jda", ":Bdelete all<cr>", { desc = "Close All Buffers" })
+

@@ -13,6 +13,9 @@ local opt = vim.opt
 
 opt.updatetime = 500
 
+opt.spelllang = "en_gb"
+opt.spell = true
+
 opt.relativenumber = true
 opt.number = true
 
