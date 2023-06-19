@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero').preset({})
+local builtin = require('telescope.builtin')
 
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
@@ -14,6 +15,8 @@ lsp.on_attach(function(client, bufnr)
   end, opts)
 
   vim.keymap.set('n', '<leader>ll', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {buffer = true})
+  vim.keymap.set('n', 'gr', builtin.lsp_references, {buffer = true})
 end)
 
 -- (Optional) Configure lua language server for neovim

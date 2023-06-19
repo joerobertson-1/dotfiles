@@ -22,6 +22,10 @@ vim.keymap.set("n", "<leader>sh", "<C-w>s")
 vim.keymap.set("n", "<leader>se", "<C-w>=")
 vim.keymap.set("n", "<leader>sx", ":close<CR>")
 
+-- Quick nav
+vim.keymap.set("n", "J", "3jzz")
+vim.keymap.set("n", "K", "3kzz")
+
 -- vim.keymap.set("n", "<leader>to", ":tabnew<CR>") -- open new tab
 -- vim.keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 -- vim.keymap.set("n", "<leader>tn", ":tabn<CR>") --  go to next tab

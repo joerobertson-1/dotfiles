@@ -7,7 +7,7 @@ vim.g.wildfire_objects = {
   ['*'] = { "iw", "i'", 'i"', "i)", "i]", "i}", "ip", "it" }
 }
 
-vim.cmd("colorscheme catppuccin")
+-- vim.cmd("colorscheme catppuccin")
 
 local opt = vim.opt
 

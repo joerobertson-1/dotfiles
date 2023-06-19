@@ -11,6 +11,10 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
+  use "nvim-telescope/telescope-dap.nvim"
+  use "theHamsta/nvim-dap-virtual-text"
+  use "rcarriga/nvim-dap-ui"
+
   use { "catppuccin/nvim", as = "catppuccin" }
 
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
@@ -21,11 +25,44 @@ return require('packer').startup(function(use)
   })
 
   use "gcmt/wildfire.vim"
+  use "gelguy/wilder.nvim"
+
+  use {
+    "mfussenegger/nvim-dap",
+    opt = true,
+    module = { "dap" },
+    requires = {
+      "theHamsta/nvim-dap-virtual-text",
+      "rcarriga/nvim-dap-ui",
+      "nvim-telescope/telescope-dap.nvim",
+      { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
+      {
+        "microsoft/vscode-js-debug",
+        opt = true,
+        run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+      },
+    },
+    disable = false,
+  }
+
+  use "Asheq/close-buffers.vim"
 
   use { 'nvim-telescope/telescope-ui-select.nvim' }
 
   use 'preservim/vimux'
   use 'vim-test/vim-test'
+
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      'haydenmeade/neotest-jest',
+    }
+  }
+
+  use 'nvim-neotest/neotest-vim-test'
 
   use 'theprimeagen/harpoon'
 
@@ -44,7 +81,7 @@ return require('packer').startup(function(use)
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
-  use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
+  use { 'akinsho/bufferline.nvim', after = "catppuccin", tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
   use 'airblade/vim-gitgutter'
 
