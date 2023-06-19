@@ -1,6 +1,5 @@
 require("catppuccin").setup({
   flavour = "mocha",
-  term_colors = true,
 	integrations = {
 		telescope = true,
 		harpoon = true,

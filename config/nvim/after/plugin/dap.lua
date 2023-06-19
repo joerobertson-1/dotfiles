@@ -11,9 +11,6 @@ vim.keymap.set('n', '<leader>db', '<cmd>lua require"dap".toggle_breakpoint()<CR>
 vim.keymap.set('n', '<leader>dx', '<cmd>lua require"dap".clear_breakpoints()<CR>')
 vim.keymap.set('n', '<leader>drc', '<cmd>lua require"dap".run_to_cursor()<CR>')
 
--- Is there a way to rerun the last config?
--- vim.keymap.set('n', '<leader>drl', '<cmd>lua require"dap".repl.run_last()<CR>')
-
 -- DAP UI
 vim.keymap.set('n', '<leader>du', '<cmd>lua require"dapui".toggle()<CR>')
 vim.keymap.set('n', '<leader>dre', '<cmd>lua require"dapui".float_element("repl")<CR>')
