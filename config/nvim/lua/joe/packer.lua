@@ -7,6 +7,7 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
 
   use 'github/copilot.vim'
+  use('MunifTanjim/prettier.nvim')
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -30,6 +31,10 @@ return require('packer').startup(function(use)
       }
     end
   }
+
+  use('neovim/nvim-lspconfig')
+  use('jose-elias-alvarez/null-ls.nvim')
+  use('MunifTanjim/prettier.nvim')
 
   use "nvim-telescope/telescope-dap.nvim"
   use "theHamsta/nvim-dap-virtual-text"

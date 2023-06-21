@@ -43,7 +43,7 @@ vim.keymap.set('n', '<leader>to', "<cmd>lua require('neotest').output.open({ ent
 neotest.setup({
   adapters = {
     require('neotest-jest')({
-      jestCommand = "npm test --",
+      jestCommand = "npx jest",
       jestConfigFile = "custom.jest.config.ts",
       env = { CI = true },
       cwd = function(path)
