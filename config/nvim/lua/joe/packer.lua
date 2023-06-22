@@ -9,6 +9,20 @@ return require('packer').startup(function(use)
   use 'github/copilot.vim'
   use('MunifTanjim/prettier.nvim')
 
+  use 'vimwiki/vimwiki'
+
+  use({
+    "jackMort/ChatGPT.nvim",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
+
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     requires = { { 'nvim-lua/plenary.nvim' } }
@@ -18,6 +32,23 @@ return require('packer').startup(function(use)
     'goolord/alpha-nvim',
     requires = { 'nvim-tree/nvim-web-devicons' },
   }
+
+  use 'MunifTanjim/eslint.nvim'
+
+  use {
+    'stevearc/aerial.nvim',
+    config = function() require('aerial').setup() end
+  }
+
+  use({
+    "Pocco81/auto-save.nvim",
+    config = function()
+      require("auto-save").setup {
+        -- your config goes here
+        -- or just leave it empty :)
+      }
+    end,
+  })
 
   use {
     "folke/which-key.nvim",
@@ -32,7 +63,18 @@ return require('packer').startup(function(use)
     end
   }
 
+  require('packer').use({
+    'weilbith/nvim-code-action-menu',
+    cmd = 'CodeActionMenu',
+  })
+
   use('neovim/nvim-lspconfig')
+  use({
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").setup()
+    end,
+  })
   use('jose-elias-alvarez/null-ls.nvim')
   use('MunifTanjim/prettier.nvim')
 
@@ -123,6 +165,7 @@ return require('packer').startup(function(use)
         end,
       },
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+      { 'onsails/lspkind.nvim' },
 
       -- Autocompletion
       { 'hrsh7th/nvim-cmp' },     -- Required
