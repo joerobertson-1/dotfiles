@@ -1,10 +1,8 @@
 local lsp = require('lsp-zero').preset({})
 local builtin = require('telescope.builtin')
-local eslint = require('eslint')
 
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({ buffer = bufnr })
-  lsp.buffer_autoformat()
   local opts = { buffer = bufnr }
 
   vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, opts)
@@ -12,8 +10,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', { buffer = true })
   vim.keymap.set('n', 'gr', builtin.lsp_references, { buffer = true })
 end)
-
-eslint.setup()
 
 lsp.set_sign_icons({
   error = '✘',
@@ -41,20 +37,6 @@ vim.diagnostic.config({
       )
     end,
   },
-})
-
-lsp.format_on_save({
-  format_opts = {
-    async = false,
-    timeout_ms = 10000,
-  },
-  servers = {
-    ['prettier'] = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'scss', 'json', 'yaml',
-      'markdown', 'html', 'l' },
-    -- if you have a working setup with null-ls
-    -- you can specify filetypes it can format.
-    -- ['null-ls'] = {'javascript', 'typescript'},
-  }
 })
 
 -- (Optional) Configure lua language server for neovim
