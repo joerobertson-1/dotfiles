@@ -55,3 +55,5 @@ vim.keymap.set("n", "<leader>ji", ":BufferLineCyclePrev<CR>", { desc = "Previous
 vim.keymap.set("n", "<leader>jx", ":BufferLinePickClose<CR>", { desc = "Close Buffer" })
 vim.keymap.set("n", "<leader>jda", ":Bdelete all<cr>", { desc = "Close All Buffers" })
 
+vim.keymap.set("n", "<leader>zm", ":ZenMode<cr>", { desc = "Zen Mode" })
+

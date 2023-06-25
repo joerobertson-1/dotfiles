@@ -63,6 +63,13 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Using flash for now
+  -- use 'ggandor/leap.nvim'
+
+  use 'folke/flash.nvim'
+  use 'folke/trouble.nvim'
+  use "folke/zen-mode.nvim"
+
   require('packer').use({
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
@@ -193,7 +200,6 @@ return require('packer').startup(function(use)
     end
   })
 
-  use 'ggandor/leap.nvim'
 
   use 'christoomey/vim-tmux-navigator'
 end)
