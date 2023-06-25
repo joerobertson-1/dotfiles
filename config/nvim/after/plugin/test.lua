@@ -36,9 +36,6 @@ vim.keymap.set('n', '<leader>tdl', "<cmd>lua require('neotest').run.run_last({ s
 
 vim.keymap.set('n', '<leader>ts', "<cmd>lua require('neotest').summary.toggle()<cr>", {})
 vim.keymap.set('n', '<leader>to', "<cmd>lua require('neotest').output.open({ enter = true, short = false })<cr>", {})
--- vim.keymap.set('n', '<leader>tf', ':TestFile<CR>')
--- vim.keymap.set('n', '<leader>tl', ':TestLast<CR>')
--- vim.keymap.set('n', '<leader>ts', ':TestSuite<CR>')
 
 neotest.setup({
   adapters = {

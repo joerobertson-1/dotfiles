@@ -3,9 +3,6 @@ require("joe.remap")
 -- Disable netrew
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.g.wildfire_objects = {
-  ['*'] = { "iw", "i'", 'i"', "i)", "i]", "i}", "ip", "it" }
-}
 
 -- vim.cmd("colorscheme catppuccin")
 

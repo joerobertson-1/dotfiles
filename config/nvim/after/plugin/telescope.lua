@@ -10,7 +10,6 @@ vim.keymap.set('n', '<leader>gl', builtin.git_commits, { desc = 'Git Log' })
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fs', builtin.grep_string, { desc = 'Find Current Symbol' })
 
-require("telescope").load_extension("ui-select")
 require("telescope").setup {
   defaults = {
     path_display = { 'smart' },

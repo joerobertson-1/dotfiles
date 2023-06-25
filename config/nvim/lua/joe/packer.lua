@@ -4,103 +4,77 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Utility plugins
+  use 'nvim-lua/plenary.nvim'
+  use 'MunifTanjim/nui.nvim'
   use 'nvim-tree/nvim-web-devicons'
 
+  -- AI Plugins
   use 'github/copilot.vim'
-  use('MunifTanjim/prettier.nvim')
+  use 'jackMort/ChatGPT.nvim'
 
+  -- Organisation Plugins
   use 'vimwiki/vimwiki'
 
-  use({
-    "jackMort/ChatGPT.nvim",
-    config = function()
-      require("chatgpt").setup()
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-  })
-
+  -- Telescope is a generic fuzzy finder
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  use {
-    'goolord/alpha-nvim',
-    requires = { 'nvim-tree/nvim-web-devicons' },
-  }
+  -- Aerial gives a nice overview of the current file
+  use 'stevearc/aerial.nvim'
 
-  use 'MunifTanjim/eslint.nvim'
+  -- which-key shows the available keybindings
+  use 'folke/which-key.nvim'
 
-  use {
-    'stevearc/aerial.nvim',
-    config = function() require('aerial').setup() end
-  }
-
-  -- use({
-  --   "Pocco81/auto-save.nvim",
-  --   config = function()
-  --     require("auto-save").setup {
-  --       -- your config goes here
-  --       -- or just leave it empty :)
-  --     }
-  --   end,
-  -- })
-
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end
-  }
-
-  -- Using flash for now
-  -- use 'ggandor/leap.nvim'
-
+  -- flash is similar to leap, good for jumping around files
   use 'folke/flash.nvim'
-  use 'folke/trouble.nvim'
-  use "folke/zen-mode.nvim"
 
+  -- trouble is a nice way to show diagnostics
+  use 'folke/trouble.nvim'
+
+  -- zen-mode is a nice way to focus on the current buffer
+  use 'folke/zen-mode.nvim'
+
+  -- Noice for some funky UI stuff
+  use 'folke/noice.nvim'
+  use 'rcarriga/nvim-notify'
+
+  -- LSP setup
+  use('neovim/nvim-lspconfig')
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    requires = {
+      {
+        'williamboman/mason.nvim',
+        run = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+      { 'onsails/lspkind.nvim' },
+      { 'hrsh7th/nvim-cmp' },     -- Required
+      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'L3MON4D3/LuaSnip' }, -- Required
+    }
+  }
+
+  -- Shows a list of code actions
   require('packer').use({
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
   })
 
-  use('neovim/nvim-lspconfig')
-  use({
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    config = function()
-      require("lsp_lines").setup()
-    end,
-  })
-  use('jose-elias-alvarez/null-ls.nvim')
-  use('MunifTanjim/prettier.nvim')
+  -- Shows diagnostics for a line in a nicer way
+  use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
 
-  use "nvim-telescope/telescope-dap.nvim"
-  use "theHamsta/nvim-dap-virtual-text"
-  use "rcarriga/nvim-dap-ui"
+  -- Nice way for tools like eslint and prettier to hook into LSP
+  use 'jose-elias-alvarez/null-ls.nvim'
 
-  use { "catppuccin/nvim", as = "catppuccin" }
-
-  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-  use({
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    after = "nvim-treesitter",
-    requires = "nvim-treesitter/nvim-treesitter",
-  })
-
-  use "gcmt/wildfire.vim"
-  use "gelguy/wilder.nvim"
-
+  -- DAP Related (Debugging)
   use {
     "mfussenegger/nvim-dap",
     opt = true,
@@ -119,10 +93,29 @@ return require('packer').startup(function(use)
     disable = false,
   }
 
+  -- Telescope integration for DAP commands
+  use "nvim-telescope/telescope-dap.nvim"
+
+  -- Shows current values of variables in the virtual text while debugging
+  use "theHamsta/nvim-dap-virtual-text"
+
+  -- Shows a nice UI for debugging
+  use "rcarriga/nvim-dap-ui"
+
+  -- Theme
+  use { "catppuccin/nvim", as = "catppuccin" }
+
+  -- Treesitter for syntax highlighting
+  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+  use({
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+  })
+
+  -- Used to close all buffers quickly
   use "Asheq/close-buffers.vim"
 
-  use { 'nvim-telescope/telescope-ui-select.nvim' }
-
+  -- Vimux allows tests to be run in a tmux pane
   use 'preservim/vimux'
   use 'vim-test/vim-test'
 
@@ -138,58 +131,35 @@ return require('packer').startup(function(use)
 
   use 'nvim-neotest/neotest-vim-test'
 
+  -- Harpoon allows you to quickly jump between files
   use 'theprimeagen/harpoon'
 
+  -- Vim-fugitive for git
   use 'tpope/vim-fugitive'
+  use 'airblade/vim-gitgutter'
+
+  -- Vim-commentary for commenting
   use 'tpope/vim-commentary'
 
+  -- Autopairs for auto closing brackets
   use {
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
 
-  use "ThePrimeagen/vim-be-good"
-
+  -- Lualine as the status bar
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
+  -- Bufferline for the buffer bar
   use { 'akinsho/bufferline.nvim', after = "catppuccin", tag = "*", requires = 'nvim-tree/nvim-web-devicons' }
 
-  use 'airblade/vim-gitgutter'
+  -- nvim-tree as a file explorer
+  use 'nvim-tree/nvim-tree.lua'
 
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' }, -- Required
-      {                            -- Optional
-        'williamboman/mason.nvim',
-        run = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
-      },
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-      { 'onsails/lspkind.nvim' },
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },     -- Required
-      { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'L3MON4D3/LuaSnip' }, -- Required
-    }
-  }
-
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
-  }
-
+  -- nvim-surround for surrounding text
   use({
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -200,6 +170,6 @@ return require('packer').startup(function(use)
     end
   })
 
-
+  -- vim-tmux-navigator for navigating between vim and tmux panes (see .tmux.conf)
   use 'christoomey/vim-tmux-navigator'
 end)
