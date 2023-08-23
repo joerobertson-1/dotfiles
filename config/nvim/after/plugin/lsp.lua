@@ -6,7 +6,7 @@ lsp.on_attach(function(client, bufnr)
   local opts = { buffer = bufnr }
 
   vim.keymap.set('n', '<leader>k', vim.lsp.buf.hover, opts)
-  vim.keymap.set('n', '<leader>l', '<cmd>CodeAction<cr>', opts)
+  vim.keymap.set('n', '<leader>ll', '<cmd>CodeAction<cr>', opts)
   vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', { buffer = true })
   vim.keymap.set('n', 'gr', builtin.lsp_references, { buffer = true })
 end)
